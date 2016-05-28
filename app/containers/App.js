@@ -8,21 +8,48 @@ import {
   Text,
   View,
   StyleSheet,
+  TabBarIOS,
 } from 'react-native';
 
+var Favorites = require('./Favorites');
+var Explore = require('./Explore');
 
-class App extends Component {
+
+export default class App extends Component {
 
   constructor (props) {
     super(props);
+    this.state = {
+      selectedTab: 'explore'
+    };
   }
 
 
   render () {
     return (
-      <View style={styles.container}>
-       <Text>Hey</Text>
-      </View>
+      <TabBarIOS selectedTab={this.state.selectedTab}>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'explore'}
+          systemIcon='top-rated'
+          onPress={() => {
+            this.setState({
+              selectedTab: 'explore'
+            });
+          }}>
+        <Explore />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'Favorites'}
+          systemIcon='featured'
+          onPress={() => {
+            this.setState({
+              selectedTab: 'favorites'
+            });
+          }}>
+        <Favorites />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
@@ -34,5 +61,3 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-
-module.exports = App;

@@ -11,28 +11,28 @@ import {
   NavigatorIOS,
 } from 'react-native';
 
+var BrewMethodList = require('../components/BrewMethodList');
+
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      // justifyContent: 'center',
+      // alignItems: 'center'
+  }
+});
 
 class Explore extends Component {
-
   render () {
     return (
-      <View style={styles.container}>
-       <Text>Explore</Text>
-      </View>
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Explore',
+          component: BrewMethodList
+        }}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  description: {
-          fontSize: 20,
-          backgroundColor: 'white'
-      },
-  container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-  }
-});
 
 module.exports = Explore;

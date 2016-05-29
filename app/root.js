@@ -2,21 +2,19 @@ import React, {
   Component,
 } from 'react';
 
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-// import reducers from './reducers';
 import App from './containers/App';
+import configureStore from './store/configure-store';
 
-// const createStoreWithMW = applyMiddleware(thunk)(createStore)
-// const store = createStoreWithMW(reducers);
+const store = configureStore();
 
 class Root extends Component {
   render() {
     return (
-      // <Provider store={store}>
+      <Provider store={store}>
         <App />
-      // </Provider>
+      </Provider>
     );
   }
 }

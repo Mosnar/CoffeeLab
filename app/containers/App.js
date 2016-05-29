@@ -28,10 +28,11 @@ class App extends Component {
 
 
   render () {
+    const {selectedTab} = this.state;
     return (
-      <TabBarIOS selectedTab={this.state.selectedTab}>
+      <TabBarIOS selectedTab={selectedTab}>
         <Icon.TabBarItemIOS
-          selected={this.state.selectedTab === 'explore'}
+          selected={selectedTab === 'explore'}
           iconName="ios-beaker-outline"
           title="Explore"
           selectedIconName="ios-beaker"
@@ -44,7 +45,7 @@ class App extends Component {
         </Icon.TabBarItemIOS>
 
         <Icon.TabBarItemIOS
-          selected={this.state.selectedTab === 'favorites'}
+          selected={selectedTab === 'favorites'}
           iconName="ios-heart-outline"
           title="Favorites"
           selectedIconName="ios-heart"

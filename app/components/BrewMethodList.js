@@ -3,14 +3,14 @@
 var BREW_METHOD_DATA = [
   {
     methodInfo: {
-      title: 'Aeropress',
+      title: 'AeroPress',
       icon: 'aeropress.png',
       categories: ['pressure', 'filter']
     }
   },
   {
     methodInfo: {
-      title: 'Inverted Aeropress',
+      title: 'Inverted AeroPress',
       icon: 'aeropress_inverted.png',
       categories: ['pressure', 'filter']
     }
@@ -43,6 +43,55 @@ var BREW_METHOD_DATA = [
       categories: ['immersion']
     }
   },
+  {
+    methodInfo: {
+      title: 'Drip',
+      icon: 'drip.png',
+      categories: ['filter', 'drip']
+    }
+  },
+  {
+    methodInfo: {
+      title: 'Bee House',
+      icon: 'beehouse.png',
+      categories: ['filter', 'pourover']
+    }
+  },
+  {
+    methodInfo: {
+      title: 'Chemex',
+      icon: 'chemex.png',
+      categories: ['filter', 'pourover']
+    }
+  },
+    {
+      methodInfo: {
+        title: 'Vacuum Pot',
+        icon: 'vacuumpot.png',
+        categories: ['pressure']
+      }
+    },
+    {
+      methodInfo: {
+        title: 'Siphon',
+        icon: 'siphon.png',
+        categories: ['pressure']
+      }
+    },
+    {
+      methodInfo: {
+        title: 'Turkish',
+        icon: 'turkish.png',
+        categories: ['immersion']
+      }
+    },
+    {
+      methodInfo: {
+        title: 'Clever',
+        icon: 'clever.png',
+        categories: ['filter', 'pourover', 'immersion']
+      }
+    },
 ];
 
 import React, {
@@ -54,7 +103,9 @@ import {
   View,
   Image,
   StyleSheet,
+  ListView,
   NavigatorIOS,
+  TouchableHighlight
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -78,23 +129,58 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 8
     },
+    separator: {
+       height: 1,
+       backgroundColor: '#dddddd'
+   }
 });
 
 
 class BrewMethodList extends Component {
-  render() {
-    var brewMethod = BREW_METHOD_DATA.pop();
+  constructor(props) {
+       super(props);
 
+       this.state = {
+           dataSource: new ListView.DataSource({
+               rowHasChanged: (row1, row2) => row1 !== row2
+           })
+       };
+   }
+
+   componentDidMount() {
+    var brewMethods = BREW_METHOD_DATA;
+    this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(brewMethods)
+    });
+   }
+
+   render() {
+     return (
+          <ListView
+              dataSource={this.state.dataSource}
+              renderRow={this.renderBrewMethod.bind(this)}
+              style={styles.listView}
+          />
+    );
+  }
+
+  renderBrewMethod(brewMethod) {
     var methodInfo = brewMethod.methodInfo;
     var {title, icon, categories} = methodInfo;
     return (
-      <View style={styles.container}>
-                <Image source={{uri: icon}}
-                            style={styles.thumbnail} />
+      <TouchableHighlight>
+        <View>
+            <View style={styles.container}>
+                <Image
+                    source={{uri: icon}}
+                    style={styles.thumbnail} />
                 <View style={styles.rightContainer}>
                     <Text style={styles.title}>{title}</Text>
                 </View>
-      </View>
+            </View>
+            <View style={styles.separator} />
+        </View>
+      </TouchableHighlight>
     );
   }
 }

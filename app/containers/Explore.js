@@ -1,14 +1,14 @@
 'use strict'
 
 import React, {
-  Component,
+    Component,
 } from 'react';
 
 import {
-  Text,
-  View,
-  StyleSheet,
-  NavigatorIOS,
+    Text,
+    View,
+    StyleSheet,
+    NavigatorIOS,
 } from 'react-native';
 
 var BrewMethodList = require('../components/BrewMethodList');
@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
   }
 });
 
+// TODO: Add a filter button to top right (UINAvigatoButton)
+// https://facebook.github.io/react-native/docs/navigatorios.html
 class Explore extends Component {
   render () {
     return (
@@ -30,6 +32,7 @@ class Explore extends Component {
           title: 'Explore',
           component: BrewMethodList
         }}
+
       />
     );
   }

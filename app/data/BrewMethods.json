@@ -1,0 +1,80 @@
+[{
+        methodInfo: {
+            title: 'AeroPress',
+            icon: 'aeropress.png',
+            categories: ['pressure', 'filter']
+        }
+    }, {
+        methodInfo: {
+            title: 'Inverted AeroPress',
+            icon: 'aeropress_inverted.png',
+            categories: ['pressure', 'filter']
+        }
+    }, {
+        methodInfo: {
+            title: 'Hario V60',
+            icon: 'hario_v60.png',
+            categories: ['pourover', 'filter']
+        }
+    }, {
+        methodInfo: {
+            title: 'Kalita Wave',
+            icon: 'kalita_wave.png',
+            categories: ['pourover', 'filter']
+        }
+    }, {
+        methodInfo: {
+            title: 'French Press',
+            icon: 'french_press.png',
+            categories: ['immersion']
+        }
+    }, {
+        methodInfo: {
+            title: 'Full Immersion',
+            icon: 'full_immersion.png',
+            categories: ['immersion']
+        }
+    }, {
+        methodInfo: {
+            title: 'Drip',
+            icon: 'drip.png',
+            categories: ['filter', 'drip']
+        }
+    }, {
+        methodInfo: {
+            title: 'Bee House',
+            icon: 'beehouse.png',
+            categories: ['filter', 'pourover']
+        }
+    }, {
+        methodInfo: {
+            title: 'Chemex',
+            icon: 'chemex.png',
+            categories: ['filter', 'pourover']
+        }
+    }, {
+        methodInfo: {
+            title: 'Vacuum Pot',
+            icon: 'vacuumpot.png',
+            categories: ['pressure']
+        }
+    }, {
+        methodInfo: {
+            title: 'Siphon',
+            icon: 'siphon.png',
+            categories: ['pressure']
+        }
+    },
+
+    methodInfo: {
+        title: 'Turkish',
+        icon: 'turkish.png',
+        categories: ['immersion']
+    }
+}, {
+    methodInfo: {
+        title: 'Clever',
+        icon: 'clever.png',
+        categories: ['filter', 'pourover', 'immersion']
+    }
+}]

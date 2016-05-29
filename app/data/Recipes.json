@@ -4,16 +4,19 @@
     "meta": {
       "name": "1st Place World AeroPress Championship",
       "authors": ["Lukas Zahradnik"],
+      "source": "",
       "brewMethod": "aeropress",
       "tags": ["inverted"]
     },
     "details": {
       "coffeeWeight": "20.0",
+      "waterWeight": "230.0",
       "brewTemp": "79",
       "grind": {
         "grinder": "EK43",
         "setting": "7.3"
-      }
+      },
+      "hardware": ["aeropress"]
     },
     "steps": [
       {

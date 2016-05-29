@@ -1,30 +1,30 @@
 'use strict'
 
 import React, {
-    Component,
+  Component,
 } from 'react';
 
 import {
-    Text,
-    View,
-    StyleSheet,
-    NavigatorIOS,
+  Text,
+  View,
+  StyleSheet,
+  NavigatorIOS,
 } from 'react-native';
 
 var BrewMethodList = require('../components/BrewMethodList');
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      // justifyContent: 'center',
-      // alignItems: 'center'
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center'
   }
 });
 
 // TODO: Add a filter button to top right (UINAvigatoButton)
 // https://facebook.github.io/react-native/docs/navigatorios.html
 class Explore extends Component {
-  render () {
+  render() {
     return (
       <NavigatorIOS
         style={styles.container}

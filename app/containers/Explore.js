@@ -8,15 +8,11 @@ import {
   Text,
   View,
   StyleSheet,
+  NavigatorIOS,
 } from 'react-native';
 
 
-export default class Explore extends Component {
-
-  constructor (props) {
-    super(props);
-  }
-
+class Explore extends Component {
 
   render () {
     return (
@@ -38,3 +34,5 @@ const styles = StyleSheet.create({
       alignItems: 'center'
   }
 });
+
+module.exports = Explore;

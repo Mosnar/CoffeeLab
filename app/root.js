@@ -11,7 +11,7 @@ import App from './containers/App';
 // const createStoreWithMW = applyMiddleware(thunk)(createStore)
 // const store = createStoreWithMW(reducers);
 
-export default class Root extends Component {
+class Root extends Component {
   render() {
     return (
       // <Provider store={store}>
@@ -20,3 +20,5 @@ export default class Root extends Component {
     );
   }
 }
+
+module.exports = Root;

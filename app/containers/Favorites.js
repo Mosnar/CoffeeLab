@@ -8,14 +8,11 @@ import {
   Text,
   View,
   StyleSheet,
+  NavigatorIOS,
 } from 'react-native';
 
 
-export default class Favorites extends Component {
-
-  constructor (props) {
-    super(props);
-  }
+class Favorites extends Component {
 
 
   render () {
@@ -38,3 +35,6 @@ const styles = StyleSheet.create({
       alignItems: 'center'
   }
 });
+
+
+module.exports = Favorites;

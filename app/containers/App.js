@@ -11,44 +11,50 @@ import {
   TabBarIOS,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 var Favorites = require('./Favorites');
 var Explore = require('./Explore');
 
 
-export default class App extends Component {
+class App extends Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      selectedTab: 'explore'
-    };
+  constructor(props) {
+      super(props);
+      this.state = {
+          selectedTab: 'explore'
+      };
   }
 
 
   render () {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>
-        <TabBarIOS.Item
+        <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'explore'}
-          systemIcon='top-rated'
+          iconName="ios-home-outline"
+          title="Explore"
+          selectedIconName="ios-home"
           onPress={() => {
             this.setState({
-              selectedTab: 'explore'
+              selectedTab: 'explore',
             });
           }}>
-        <Explore />
-        </TabBarIOS.Item>
+        {<Explore />}
+        </Icon.TabBarItemIOS>
 
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'Favorites'}
-          systemIcon='featured'
+        <Icon.TabBarItemIOS
+          selected={this.state.selectedTab === 'favorites'}
+          iconName="ios-heart-outline"
+          title="Favorites"
+          selectedIconName="ios-heart"
           onPress={() => {
             this.setState({
               selectedTab: 'favorites'
             });
           }}>
-        <Favorites />
-        </TabBarIOS.Item>
+        {<Favorites />}
+        </Icon.TabBarItemIOS>
       </TabBarIOS>
     );
   }
@@ -61,3 +67,5 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
+module.exports = App;

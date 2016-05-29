@@ -32,9 +32,9 @@ class App extends Component {
       <TabBarIOS selectedTab={this.state.selectedTab}>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'explore'}
-          iconName="ios-home-outline"
+          iconName="ios-beaker-outline"
           title="Explore"
-          selectedIconName="ios-home"
+          selectedIconName="ios-beaker"
           onPress={() => {
             this.setState({
               selectedTab: 'explore',

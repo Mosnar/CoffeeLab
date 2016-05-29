@@ -1,80 +1,142 @@
-[{
-        methodInfo: {
-            title: 'AeroPress',
-            icon: 'aeropress.png',
-            categories: ['pressure', 'filter']
-        }
-    }, {
-        methodInfo: {
-            title: 'Inverted AeroPress',
-            icon: 'aeropress_inverted.png',
-            categories: ['pressure', 'filter']
-        }
-    }, {
-        methodInfo: {
-            title: 'Hario V60',
-            icon: 'hario_v60.png',
-            categories: ['pourover', 'filter']
-        }
-    }, {
-        methodInfo: {
-            title: 'Kalita Wave',
-            icon: 'kalita_wave.png',
-            categories: ['pourover', 'filter']
-        }
-    }, {
-        methodInfo: {
-            title: 'French Press',
-            icon: 'french_press.png',
-            categories: ['immersion']
-        }
-    }, {
-        methodInfo: {
-            title: 'Full Immersion',
-            icon: 'full_immersion.png',
-            categories: ['immersion']
-        }
-    }, {
-        methodInfo: {
-            title: 'Drip',
-            icon: 'drip.png',
-            categories: ['filter', 'drip']
-        }
-    }, {
-        methodInfo: {
-            title: 'Bee House',
-            icon: 'beehouse.png',
-            categories: ['filter', 'pourover']
-        }
-    }, {
-        methodInfo: {
-            title: 'Chemex',
-            icon: 'chemex.png',
-            categories: ['filter', 'pourover']
-        }
-    }, {
-        methodInfo: {
-            title: 'Vacuum Pot',
-            icon: 'vacuumpot.png',
-            categories: ['pressure']
-        }
-    }, {
-        methodInfo: {
-            title: 'Siphon',
-            icon: 'siphon.png',
-            categories: ['pressure']
-        }
-    },
-
-    methodInfo: {
-        title: 'Turkish',
-        icon: 'turkish.png',
-        categories: ['immersion']
+[
+  {
+    "methodInfo": {
+      "title": "AeroPress",
+      "name": "aeropress",
+      "icon": "aeropress.png",
+      "categories": [
+        "pressure",
+        "filter"
+      ]
     }
-}, {
-    methodInfo: {
-        title: 'Clever',
-        icon: 'clever.png',
-        categories: ['filter', 'pourover', 'immersion']
+  },
+  {
+    "methodInfo": {
+      "title": "Hario V60",
+      "name": "v60",
+      "icon": "hario-v60.png",
+      "categories": [
+        "pourover",
+        "filter"
+      ]
     }
-}]
+  },
+  {
+    "methodInfo": {
+      "title": "Kalita Wave",
+      "name": "kalita_wave",
+      "icon": "kalita_wave.png",
+      "categories": [
+        "pourover",
+        "filter"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "French Press",
+      "name": "french_press",
+      "icon": "french_press.png",
+      "categories": [
+        "immersion"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Full Immersion",
+      "name": "full_immersion",
+      "icon": "full_immersion.png",
+      "categories": [
+        "immersion"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Drip",
+      "name": "drip",
+      "icon": "drip.png",
+      "categories": [
+        "filter",
+        "drip"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Bee House",
+      "name": "beehouse",
+      "icon": "beehouse.png",
+      "categories": [
+        "filter",
+        "pourover"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Chemex",
+      "name": "chemex",
+      "icon": "chemex.png",
+      "categories": [
+        "filter",
+        "pourover"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Siphon",
+      "name": "siphon",
+      "icon": "siphon.png",
+      "categories": [
+        "pressure"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Turkish",
+      "name": "turkish",
+      "icon": "turkish.png",
+      "categories": [
+        "immersion"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Clever",
+      "name": "clever",
+      "icon": "clever.png",
+      "categories": [
+        "filter",
+        "pourover",
+        "immersion"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Iced Coffee",
+      "name": "iced",
+      "icon": "ice.png",
+      "categories": [
+        "cold",
+        "iced"
+      ]
+    }
+  },
+  {
+    "methodInfo": {
+      "title": "Cold Brew",
+      "name": "coldbrew",
+      "icon": "coldbrew.png",
+      "categories": [
+        "cold",
+        "iced"
+      ]
+    }
+  }
+]

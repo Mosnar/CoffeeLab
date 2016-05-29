@@ -1,0 +1,18 @@
+[
+  {
+    "grinderInfo": {
+      "mfr": "Mahlkonig",
+      "model": "EK43",
+      "power": "electric",
+      "burrs": {
+        "type": "flat",
+        "material": "steel"
+      },
+      "grind": {
+        "step": "float",
+        "fine": "0.0",
+        "coarse": "11.0"
+      }
+    }
+  }
+]

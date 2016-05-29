@@ -1,0 +1,49 @@
+[
+  {
+    "id": 0,
+    "meta": {
+      "name": "1st Place World AeroPress Championship",
+      "authors": ["Lukas Zahradnik"],
+      "brewMethod": "aeropress",
+      "tags": ["inverted"]
+    },
+    "details": {
+      "coffeeWeight": "20.0",
+      "brewTemp": "79",
+      "grind": {
+        "grinder": "EK43",
+        "setting": "7.3"
+      }
+    },
+    "steps": [
+      {
+        "type": "prompt",
+        "text": "Assemble inverted AeroPress and put in coffee"
+      },
+      {
+        "type": "prompt",
+        "text": "Add {60|wt} of water"
+      },
+      {
+        "type": "timed",
+        "amount": 15,
+        "text": "Turbulent wiggle"
+      },
+      {
+        "type": "timed",
+        "amount": 30,
+        "text": "Allow bloom"
+      },
+      {
+        "type": "timed",
+        "amount": 10,
+        "text": "Add {170|wt} of water"
+      },
+      {
+        "type": "timed",
+        "amount": 45,
+        "text": "Press into cup"
+      }
+    ]
+  }
+]

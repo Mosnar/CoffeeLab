@@ -75,6 +75,7 @@ class BrewMethodList extends Component {
   renderBrewMethod(brewMethod) {
     var methodInfo = brewMethod.methodInfo;
     var {title, icon, categories} = methodInfo;
+    icon = "./img/"+icon;
     return (
       <TouchableHighlight>
         <View>

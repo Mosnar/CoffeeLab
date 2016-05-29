@@ -11,15 +11,13 @@ import {
   NavigatorIOS,
 } from 'react-native';
 
+var RecipesList = require('../components/RecipesList');
 
 class Recipes extends Component {
   render() {
     var method = this.props.method;
-
     return (
-      <View style={styles.container}>
-        <Text>{method.title}</Text>
-      </View>
+      <RecipesList method={method} />
     );
   }
 }

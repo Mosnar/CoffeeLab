@@ -32,7 +32,6 @@ class Explore extends Component {
           title: 'Explore',
           component: BrewMethodList
         }}
-
       />
     );
   }

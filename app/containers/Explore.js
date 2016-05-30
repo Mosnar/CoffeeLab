@@ -9,6 +9,7 @@ import {
   View,
   StyleSheet,
   NavigatorIOS,
+  Navigator
 } from 'react-native';
 
 var BrewMethodList = require('../components/BrewMethodList');

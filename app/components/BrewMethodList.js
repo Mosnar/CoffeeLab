@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
     padding: 10
   },
   thumbnail: {
@@ -41,6 +40,38 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: '#dddddd'
+  },
+
+  // TODO: Move this to another component
+  featuredContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#033159'
+  },
+
+  featuredSeparator: {
+    height: 2,
+    backgroundColor: '#F25260'
+  },
+
+  featuredTitle: {
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center'
+  },
+  featuredAuthor: {
+    fontSize: 15,
+    color: '#fff',
+    textAlign: 'center',
+    fontStyle: 'italic'
+  },
+  featuredAnnoncement: {
+    fontSize: 10,
+    color: '#fff',
+    textAlign: 'center'
   }
 });
 
@@ -70,7 +101,27 @@ class BrewMethodList extends Component {
         dataSource={this.state.dataSource}
         renderRow={this.renderBrewMethod.bind(this)}
         style={styles.listView}
+        renderHeader={this.renderHeader.bind(this)}
       />
+    );
+  }
+
+  // TODO: Move to another component
+  renderHeader() {
+    var recipeId = 0;
+    return (
+      <View>
+      <TouchableHighlight style={styles.featuredContainer} onPress={() => this.jumpToRecipe(recipeId)}
+                          underlayColor='#dddddd'>
+        <View>
+            <Text style={styles.featuredAnnoncement}>Featured Recipe</Text>
+            <Text style={styles.featuredTitle}>1st Place Aeropress</Text>
+            <Text style={styles.featuredAuthor}>Matt Perger</Text>
+        </View>
+      </TouchableHighlight>
+
+      <View style={styles.featuredSeparator}/>
+    </View>
     );
   }
 

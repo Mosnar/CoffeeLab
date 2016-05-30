@@ -64,13 +64,18 @@ class RecipesList extends Component {
 
   renderRecipe(recipe) {
     var meta = recipe.meta;
+    var author = "Unknown";
+    if (meta.authors.length > 0) {
+      author = meta.authors[0];
+    }
+    var name = meta.name;
     return (
       <TouchableHighlight>
         <View>
           <View style={styles.container}>
             <View style={styles.rightContainer}>
-              <Text style={styles.title}>{meta.name}</Text>
-              <Text style={styles.author}>{meta.authors.pop()}</Text>
+              <Text style={styles.title}>{name}</Text>
+              <Text style={styles.author}>{author}</Text>
             </View>
           </View>
           <View style={styles.separator}/>
@@ -97,23 +102,13 @@ var styles = StyleSheet.create({
     padding: 10
   },
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    padding: 10
-  },
-  thumbnail: {
-    width: 53,
-    height: 81,
-    marginRight: 10
-  },
-  rightContainer: {
-    flex: 1
+    padding: 10,
+    paddingLeft: 5,
+    paddingRight: 5
   },
   title: {
-    fontSize: 20,
+    fontSize: 15,
     marginBottom: 8
   },
   separator: {
@@ -122,7 +117,7 @@ var styles = StyleSheet.create({
   },
   author: {
     color: '#656565'
-  },
+  }
 });
 
 module.exports = RecipesList;

@@ -111,7 +111,7 @@ class BrewMethodList extends Component {
     var recipeId = 0;
     return (
       <View>
-      <TouchableHighlight style={styles.featuredContainer} onPress={() => this.jumpToRecipe(recipeId)}
+      <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
                           underlayColor='#dddddd'>
         <View>
             <Text style={styles.featuredAnnoncement}>Featured Recipe</Text>
@@ -123,6 +123,11 @@ class BrewMethodList extends Component {
       <View style={styles.featuredSeparator}/>
     </View>
     );
+  }
+
+  // TODO: Implement
+  _jumpToRecipe() {
+    console.log("Implement jump to recipe in BrewMethodList.js");
   }
 
   renderBrewMethod(brewMethod) {

@@ -17,7 +17,7 @@ class Recipes extends Component {
   render() {
     var method = this.props.method;
     return (
-      <RecipesList method={method} />
+      <RecipesList method={method}/>
     );
   }
 }

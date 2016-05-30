@@ -20,14 +20,14 @@ var Explore = require('./Explore');
 class App extends Component {
 
   constructor(props) {
-      super(props);
-      this.state = {
-          selectedTab: 'explore'
-      };
+    super(props);
+    this.state = {
+      selectedTab: 'explore'
+    };
   }
 
 
-  render () {
+  render() {
     const {selectedTab} = this.state;
     return (
       <TabBarIOS selectedTab={selectedTab}>
@@ -41,7 +41,7 @@ class App extends Component {
               selectedTab: 'explore',
             });
           }}>
-        {<Explore />}
+          {<Explore />}
         </Icon.TabBarItemIOS>
 
         <Icon.TabBarItemIOS
@@ -54,7 +54,7 @@ class App extends Component {
               selectedTab: 'favorites'
             });
           }}>
-        {<Favorites />}
+          {<Favorites />}
         </Icon.TabBarItemIOS>
       </TabBarIOS>
     );

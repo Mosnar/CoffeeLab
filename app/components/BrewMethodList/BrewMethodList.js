@@ -49,7 +49,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#033159'
+    paddingTop: 50,
+    paddingBottom: 50,
+    backgroundColor: '#033159',
+    opacity: .8
+  },
+
+  backgroundImageWrapper: {
+    position: 'absolute',
+    top: 0, bottom: 0, left: 0, right: 0
+  },
+
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'stretch',
   },
 
   featuredSeparator: {
@@ -111,14 +124,16 @@ class BrewMethodList extends Component {
     var recipeId = 0;
     return (
       <View>
+          <Image source={{uri: 'https://i.ytimg.com/vi/MMMcfnQR5Js/maxresdefault.jpg'}} style={styles.backgroundImage}>
       <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
-                          underlayColor='#03318C'>
+                          underlayColor='#65808A'>
         <View>
             <Text style={styles.featuredAnnoncement}>Featured Recipe</Text>
             <Text style={styles.featuredTitle}>1st Place Aeropress</Text>
             <Text style={styles.featuredAuthor}>Matt Perger</Text>
         </View>
       </TouchableHighlight>
+            </Image>
 
       <View style={styles.featuredSeparator}/>
     </View>

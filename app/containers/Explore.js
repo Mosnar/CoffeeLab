@@ -12,18 +12,15 @@ import {
   Navigator
 } from 'react-native';
 
-var BrewMethodList = require('../components/BrewMethodList');
+var BrewMethodList = require('../components/BrewMethodList/BrewMethodList');
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center'
+    flex: 1
   }
 });
 
 // TODO: Add a filter button to top right (UINAvigatoButton)
-// https://facebook.github.io/react-native/docs/navigatorios.html
 class Explore extends Component {
   render() {
     return (

@@ -112,7 +112,7 @@ class BrewMethodList extends Component {
     return (
       <View>
       <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
-                          underlayColor='#dddddd'>
+                          underlayColor='#03318C'>
         <View>
             <Text style={styles.featuredAnnoncement}>Featured Recipe</Text>
             <Text style={styles.featuredTitle}>1st Place Aeropress</Text>

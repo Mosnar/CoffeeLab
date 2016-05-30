@@ -125,5 +125,14 @@
         "iced"
       ]
     }
+  },
+  {
+    "methodInfo": {
+      "title": "Moka Pot",
+      "name": "mokapot",
+      "categories": [
+        "pressure",
+      ]
+    }
   }
 ]

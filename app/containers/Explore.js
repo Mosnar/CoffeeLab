@@ -31,6 +31,7 @@ class Explore extends Component {
         style={styles.container}
         initialRoute={{
           title: 'Explore',
+          navigationBarHidden: true,
           component: BrewMethodList
         }}
       />

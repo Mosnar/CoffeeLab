@@ -90,6 +90,7 @@ class RecipesList extends Component {
     this.props.navigator.push({
       component: Recipe,
       title: "Recipe",
+      navigationBarHidden: true,
       passProps: {recipe: recipe}
     });
   }

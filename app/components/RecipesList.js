@@ -14,6 +14,8 @@ import {
   NavigatorIOS,
 } from 'react-native';
 
+var Recipe = require('./Recipe/Recipe');
+
 class RecipesList extends Component {
 
   recipes = [];
@@ -70,7 +72,7 @@ class RecipesList extends Component {
     }
     var name = meta.name;
     return (
-      <TouchableHighlight>
+      <TouchableHighlight onPress={() => this._showRecipe(recipe)} underlayColor='#dddddd'>
         <View>
           <View style={styles.container}>
             <View style={styles.rightContainer}>
@@ -82,6 +84,14 @@ class RecipesList extends Component {
         </View>
       </TouchableHighlight>
     );
+  }
+
+  _showRecipe(recipe) {
+    this.props.navigator.push({
+      component: Recipe,
+      title: "Recipe",
+      passProps: {recipe: recipe}
+    });
   }
 
 

@@ -130,7 +130,7 @@ class BrewMethodList extends Component {
     var {title, icon, categories} = methodInfo;
     icon = "./img/" + icon;
     return (
-      <TouchableHighlight onPress={() => this.showRecipes(methodInfo)} underlayColor='#dddddd'>
+      <TouchableHighlight onPress={() => this._showRecipes(methodInfo)} underlayColor='#dddddd'>
         <View>
           <View style={styles.container}>
             <Image
@@ -146,12 +146,12 @@ class BrewMethodList extends Component {
     );
   }
 
-  showRecipes(method) {
+  _showRecipes(method) {
     var title = method.title + " Recipes";
     this.props.navigator.push({
       component: Recipes,
       title: title,
-      passProps: {method}
+      passProps: {method: method}
     });
   }
 }

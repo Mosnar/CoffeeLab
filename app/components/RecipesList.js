@@ -18,11 +18,10 @@ var Recipe = require('./Recipe/Recipe');
 
 class RecipesList extends Component {
 
-  recipes = [];
-
   constructor(props) {
     super(props);
 
+    this.recipes = [];
     this.state = {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
@@ -42,10 +41,13 @@ class RecipesList extends Component {
 
   renderEmpty(method) {
     return (
-      <View style={styles.noRecipes}><Text>Sorry, we don't have any recipes for {method} yet.</Text></View>
+      <View style={styles.noRecipes}>
+        <Text>Sorry, we don't have any recipes for {method} yet.</Text>
+      </View>
     );
   }
 
+  // TODO: Add a beautiful header with image background and remove default nav bar
   render() {
     var {title, name, icon, categories} = this.props.method;
 

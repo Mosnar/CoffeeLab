@@ -10,6 +10,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
+var RecipeDetails = require('./RecipeDetails');
 
 const styles = StyleSheet.create({
   toolbar: {
@@ -76,11 +77,11 @@ class Recipe extends Component {
       currentStep = currentStep + 1;
       this.setState({
         currentStep: currentStep
-      })
+      });
     } else {
       this.setState({
         currentStep: step
-      })
+      });
     }
   }
 
@@ -97,7 +98,16 @@ class Recipe extends Component {
 
     var currentStepData = this.props.recipe.steps[this.state.currentStep];
 
-    // var CurrentStepLayout = {};
+    var CurrentStepLayout = {};
+
+    // var stepsView = steps.map((r, i) => {
+    //     return (
+    //       <View key={i}>
+    //         <Text>{r.text}</Text>
+    //       </View>
+    //     );
+    // });
+
 
     var main = (
       <View style={{flex: 1}}>
@@ -107,14 +117,8 @@ class Recipe extends Component {
         <View style={styles.authorBar}>
           <Text style={styles.authorText}>By {meta.authors[0]}</Text>
         </View>
-
-        <View style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
-          <View style={styles.stepContainer}>
-            <Text style={styles.stepText}>Step {this.state.currentStep} / {numSteps}</Text>
-          </View>
-        </View>
+        <RecipeDetails details={details} />
       </View>
-
     );
 
     /*

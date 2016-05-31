@@ -8,9 +8,35 @@ import {
   Text,
   View,
   StyleSheet,
+  Image,
 } from 'react-native';
 
 import convert from '../../filters/convert';
+
+
+var styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#81c04d',
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: 'row',
+    opacity: .9
+  },
+  infoTextContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  infoText: {
+    color: '#fff',
+    fontWeight: 'bold'
+  },
+  icons: {
+    width: 20,
+    height: 20,
+    marginBottom: 5,
+  }
+
+});
 
 class RecipeDetails extends Component {
 
@@ -20,17 +46,57 @@ class RecipeDetails extends Component {
     this.WT_FROM = 'g';
     this.WT_TO = 'g';
     this.TMP_FROM = 'C';
-    this.TMP_TO = 'C';
+    this.TMP_TO = 'F';
   }
 
   render() {
     var details = this.props.details;
 
+
+    var beanWeight = convert({
+      value: details.coffeeWeight,
+      from: this.WT_FROM,
+      to: this.WT_TO,
+      displayUnits: true,
+      floorResult: false
+    });
+
+    var waterWeight = convert({
+      value: details.waterWeight,
+      from: this.WT_FROM,
+      to: this.WT_TO,
+      displayUnits: true,
+      floorResult: false
+    });
+
+    var waterTemp = convert({
+      value: details.waterTemp,
+      from: this.TMP_FROM,
+      to: this.TMP_TO,
+      displayUnits: true,
+      floorResult: true
+    });
+    
     return (
-      <View style={{flex: 1}}>
-        <Text>Amount of Coffee: {convert(details.coffeeWeight, this.WT_FROM, this.WT_TO)}</Text>
-        <Text>Amount of Water: {convert(details.waterWeight, this.WT_FROM, this.WT_TO)}</Text>
-        <Text>Brew Temp: {convert(details.brewTemp, this.TMP_FROM, this.TMP_TO)}</Text>
+      <View style={styles.container}>
+        <View style={styles.infoTextContainer}>
+          <Image
+            source={{uri: 'icon_beans'}}
+            style={styles.icons}/>
+          <Text style={styles.infoText}>{beanWeight}</Text>
+        </View>
+        <View style={styles.infoTextContainer}>
+          <Image
+            source={{uri: 'icon_water'}}
+            style={styles.icons}/>
+          <Text style={styles.infoText}> {waterWeight}</Text>
+        </View>
+        <View style={styles.infoTextContainer}>
+          <Image
+            source={{uri: 'icon_brewtemp'}}
+            style={styles.icons}/>
+          <Text style={styles.infoText}>{waterTemp}</Text>
+        </View>
       </View>
     );
   }

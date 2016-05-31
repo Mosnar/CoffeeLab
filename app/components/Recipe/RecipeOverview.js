@@ -16,13 +16,6 @@ var RecipeDetails = require('./RecipeDetails');
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
-  backBar: {
-    backgroundColor: 'black',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    opacity: .8
-  },
-
   navButton: {
     flex: 1
   },
@@ -74,6 +67,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     flex: 1
+  },
+  backBar: {
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    opacity: .8
   }
 });
 
@@ -160,40 +159,45 @@ class Recipe extends Component {
         flexDirection: 'row',
         justifyContent: 'center'
       },
-      btnLeft: {
-        backgroundColor: 'red',
-        flex: 1,
-      },
-      btnRight: {
-        backgroundColor: 'blue',
-        flex: 1,
+      btnBig: {
+        backgroundColor: '#F2F0F2',
+        flex: 1
       },
       btnHeightWrapper: {
         flex: 1,
         flexDirection: 'column'
       },
       btnText: {
-        color: '#fff',
-        textAlign: 'center'
+        color: '#63498A',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 20,
       },
       btnHeightFiller: {
         flex: 1,
         justifyContent: 'center',
-      }
+      },
+      btnIcon: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20
+      },
     });
     return (
       <View style={btnStyles.container}>
-        <TouchableHighlight style={btnStyles.btnLeft}>
+        <TouchableHighlight style={btnStyles.btnBig}>
           <View style={btnStyles.btnHeightWrapper}>
             <View style={btnStyles.btnHeightFiller}>
+              <View style={btnStyles.btnIcon}><Icon name="list-ol" size={100} color="#63498A" /></View>
               <Text style={btnStyles.btnText}>View Steps</Text>
             </View>
           </View>
         </TouchableHighlight>
 
-        <TouchableHighlight style={btnStyles.btnRight}>
+        <TouchableHighlight style={btnStyles.btnBig}>
           <View style={btnStyles.btnHeightWrapper}>
             <View style={btnStyles.btnHeightFiller}>
+              <View style={btnStyles.btnIcon}><Icon name="play-circle-o" size={100} color="#63498A" /></View>
               <Text style={btnStyles.btnText}>Start Guide</Text>
             </View>
           </View>

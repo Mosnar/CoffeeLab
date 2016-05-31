@@ -11,7 +11,7 @@ import {
   Image,
 } from 'react-native';
 
-import convert from '../../filters/convert';
+import convert from '../../filters/Convert';
 
 
 var styles = StyleSheet.create({
@@ -75,6 +75,7 @@ class RecipeDetails extends Component {
       precision: 0
     });
 
+    // TODO: Make it so you can tap on the brew detail banner to change weights
     return (
       <View style={styles.container}>
         <View style={styles.infoTextContainer}>

@@ -11,7 +11,7 @@
     "details": {
       "coffeeWeight": 20.0,
       "waterWeight": 230.0,
-      "brewTemp": 79,
+      "brewTemp": 79.0,
       "grind": {
         "grinder": "EK43",
         "setting": "7.3"

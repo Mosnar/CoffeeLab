@@ -14,7 +14,7 @@ import {
   NavigatorIOS,
 } from 'react-native';
 
-var Recipe = require('./Recipe/Recipe');
+var Recipe = require('./Recipe/RecipeOverview');
 
 class RecipesList extends Component {
 

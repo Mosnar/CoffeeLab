@@ -54,29 +54,27 @@ class RecipeDetails extends Component {
 
 
     var beanWeight = convert({
-      value: details.coffeeWeight,
+      val: details.coffeeWeight,
       from: this.WT_FROM,
       to: this.WT_TO,
       displayUnits: true,
-      floorResult: false
     });
 
     var waterWeight = convert({
-      value: details.waterWeight,
+      val: details.waterWeight,
       from: this.WT_FROM,
       to: this.WT_TO,
       displayUnits: true,
-      floorResult: false
     });
 
     var waterTemp = convert({
-      value: details.waterTemp,
+      val: details.brewTemp,
       from: this.TMP_FROM,
       to: this.TMP_TO,
       displayUnits: true,
-      floorResult: true
+      precision: 0
     });
-    
+
     return (
       <View style={styles.container}>
         <View style={styles.infoTextContainer}>

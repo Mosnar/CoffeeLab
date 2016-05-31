@@ -93,7 +93,10 @@ class RecipesList extends Component {
       component: Recipe,
       title: "Recipe",
       navigationBarHidden: true,
-      passProps: {recipe: recipe}
+      passProps: {
+        recipe: recipe,
+        navigator: this.props.navigator
+      }
     });
   }
 

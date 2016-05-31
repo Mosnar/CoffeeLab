@@ -99,6 +99,10 @@ class Recipe extends Component {
     }
   }
 
+  _goBack() {
+    this.props.navigator.pop();
+  }
+
   componentDidMount() {
     this.goToStep(0);
   }
@@ -123,7 +127,7 @@ class Recipe extends Component {
     // });
 
     const backButton = (
-      <Icon.Button name="angle-left" backgroundColor="transparent">
+      <Icon.Button name="angle-left" backgroundColor="transparent" onPress={()=>{this._goBack()}}>
         <Text style={{fontSize: 15, color: '#fff'}}>Back</Text>
       </Icon.Button>
     );

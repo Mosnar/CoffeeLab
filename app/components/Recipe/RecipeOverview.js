@@ -8,12 +8,26 @@ import {
   Text,
   View,
   StyleSheet,
+  TouchableHighlight,
 } from 'react-native';
 
 var RecipeDetails = require('./RecipeDetails');
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const styles = StyleSheet.create({
-  toolbar: {
+  backBar: {
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    opacity: .8
+  },
+
+  navButton: {
+    flex: 1
+  },
+
+  titleBar: {
     backgroundColor: '#2A5E91',
     paddingTop: 30,
     paddingBottom: 10,
@@ -108,26 +122,81 @@ class Recipe extends Component {
     //     );
     // });
 
+    const backButton = (
+      <Icon.Button name="angle-left" backgroundColor="transparent">
+        <Text style={{fontSize: 15, color: '#fff'}}>Back</Text>
+      </Icon.Button>
+    );
+
 
     var main = (
       <View style={{flex: 1}}>
-        <View style={styles.toolbar}>
+        <View style={styles.titleBar}>
           <Text style={styles.toolbarTitle}>{meta.name}</Text>
         </View>
         <View style={styles.authorBar}>
           <Text style={styles.authorText}>By {meta.authors[0]}</Text>
         </View>
-        <RecipeDetails details={details} />
+        <RecipeDetails details={details}/>
+        {this.renderButtons()}
+        <View style={styles.backBar}>
+          <View style={styles.navButton}>
+            {backButton}
+          </View>
+        </View>
       </View>
     );
-
-    /*
-
-
-     */
     return main;
   }
 
+  renderButtons() {
+    var btnStyles = StyleSheet.create({
+      container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center'
+      },
+      btnLeft: {
+        backgroundColor: 'red',
+        flex: 1,
+      },
+      btnRight: {
+        backgroundColor: 'blue',
+        flex: 1,
+      },
+      btnHeightWrapper: {
+        flex: 1,
+        flexDirection: 'column'
+      },
+      btnText: {
+        color: '#fff',
+        textAlign: 'center'
+      },
+      btnHeightFiller: {
+        flex: 1,
+        justifyContent: 'center',
+      }
+    });
+    return (
+      <View style={btnStyles.container}>
+        <TouchableHighlight style={btnStyles.btnLeft}>
+          <View style={btnStyles.btnHeightWrapper}>
+            <View style={btnStyles.btnHeightFiller}>
+              <Text style={btnStyles.btnText}>View Steps</Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+
+        <TouchableHighlight style={btnStyles.btnRight}>
+          <View style={btnStyles.btnHeightWrapper}>
+            <View style={btnStyles.btnHeightFiller}>
+              <Text style={btnStyles.btnText}>Start Guide</Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+      </View>
+    )
+  }
 
 }
 

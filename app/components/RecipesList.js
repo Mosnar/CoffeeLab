@@ -115,8 +115,8 @@ var styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5FCFF',
     padding: 10,
-    paddingLeft: 5,
-    paddingRight: 5
+    paddingLeft: 10,
+    paddingRight: 10
   },
   title: {
     fontSize: 15,

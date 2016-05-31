@@ -7,13 +7,11 @@ import React, {
 import {
   Text,
   View,
-  StyleSheet,
-  TabBarIOS,
+  StyleSheet
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-var Favorites = require('./Favorites');
 var Explore = require('./Explore');
 
 
@@ -21,42 +19,12 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectedTab: 'explore'
-    };
   }
 
 
   render() {
-    const {selectedTab} = this.state;
     return (
-      <TabBarIOS selectedTab={selectedTab}>
-        <Icon.TabBarItemIOS
-          selected={selectedTab === 'explore'}
-          iconName="ios-beaker-outline"
-          title="Explore"
-          selectedIconName="ios-beaker"
-          onPress={() => {
-            this.setState({
-              selectedTab: 'explore',
-            });
-          }}>
-          {<Explore />}
-        </Icon.TabBarItemIOS>
-
-        <Icon.TabBarItemIOS
-          selected={selectedTab === 'favorites'}
-          iconName="ios-heart-outline"
-          title="Favorites"
-          selectedIconName="ios-heart"
-          onPress={() => {
-            this.setState({
-              selectedTab: 'favorites'
-            });
-          }}>
-          {<Favorites />}
-        </Icon.TabBarItemIOS>
-      </TabBarIOS>
+      <Explore />
     );
   }
 }

@@ -23,12 +23,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10
+    padding: 10,
   },
   thumbnail: {
+    resizeMode: 'contain',
     width: 80,
     height: 80,
-    marginRight: 10
+    marginRight: 10,
   },
   rightContainer: {
     flex: 1
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
 
   backgroundImage: {
     flex: 1,
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
   },
 
   featuredSeparator: {
@@ -75,13 +76,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center'
   },
+
   featuredAuthor: {
     fontSize: 15,
     color: '#fff',
     textAlign: 'center',
     fontStyle: 'italic'
   },
-  featuredAnnoncement: {
+  featuredAnnouncement: {
     fontSize: 10,
     color: '#fff',
     textAlign: 'center'
@@ -124,19 +126,19 @@ class BrewMethodList extends Component {
     var recipeId = 0;
     return (
       <View>
-          <Image source={{uri: 'https://i.ytimg.com/vi/MMMcfnQR5Js/maxresdefault.jpg'}} style={styles.backgroundImage}>
-      <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
-                          underlayColor='#65808A'>
-        <View>
-            <Text style={styles.featuredAnnoncement}>Featured Recipe</Text>
-            <Text style={styles.featuredTitle}>1st Place Aeropress</Text>
-            <Text style={styles.featuredAuthor}>Matt Perger</Text>
-        </View>
-      </TouchableHighlight>
-            </Image>
+        <Image source={{uri: 'https://i.ytimg.com/vi/MMMcfnQR5Js/maxresdefault.jpg'}} height="40" style={styles.backgroundImage}>
+          <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
+                              underlayColor='#65808A'>
+            <View>
+              <Text style={styles.featuredAnnouncement}>Featured Recipe</Text>
+              <Text style={styles.featuredTitle}>1st Place Aeropress</Text>
+              <Text style={styles.featuredAuthor}>Matt Perger</Text>
+            </View>
+          </TouchableHighlight>
+        </Image>
 
-      <View style={styles.featuredSeparator}/>
-    </View>
+        <View style={styles.featuredSeparator}/>
+      </View>
     );
   }
 
@@ -147,7 +149,7 @@ class BrewMethodList extends Component {
 
   renderBrewMethod(brewMethod) {
     var methodInfo = brewMethod.methodInfo;
-    var {title, categories, name} = methodInfo;
+    var {title, name} = methodInfo;
     return (
       <TouchableHighlight onPress={() => this._showRecipes(methodInfo)} underlayColor='#dddddd'>
         <View>

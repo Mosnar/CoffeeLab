@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   title: {
-    fontSize: 20,
-    marginBottom: 8
+    fontSize: 30
   },
   separator: {
     height: 1,
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 50,
     backgroundColor: '#033159',
-    opacity: .8
+    opacity: .8,
   },
 
   backgroundImageWrapper: {

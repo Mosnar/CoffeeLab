@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 var Recipes = require("../../containers/Recipes");
-
+var Featured = require("./BrewMethodFeatured");
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -120,30 +120,10 @@ class BrewMethodList extends Component {
     );
   }
 
-  // TODO: Move to another component
   renderHeader() {
-    var recipeId = 0;
     return (
-      <View>
-        <Image source={{uri: 'https://i.ytimg.com/vi/MMMcfnQR5Js/maxresdefault.jpg'}} height="40" style={styles.backgroundImage}>
-          <TouchableHighlight style={styles.featuredContainer} onPress={() => this._jumpToRecipe(recipeId)}
-                              underlayColor='#65808A'>
-            <View>
-              <Text style={styles.featuredAnnouncement}>Featured Recipe</Text>
-              <Text style={styles.featuredTitle}>1st Place Aeropress</Text>
-              <Text style={styles.featuredAuthor}>Matt Perger</Text>
-            </View>
-          </TouchableHighlight>
-        </Image>
-
-        <View style={styles.featuredSeparator}/>
-      </View>
+      <Featured />
     );
-  }
-
-  // TODO: Implement
-  _jumpToRecipe() {
-    console.log("Implement jump to recipe in BrewMethodList.js");
   }
 
   renderBrewMethod(brewMethod) {

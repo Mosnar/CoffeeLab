@@ -17,11 +17,16 @@ class AbstractStep extends Component {
   
   constructor(props) {
     super(props);
+
+    var step = props.recipe.steps[this.props.stepNum];
+
     this.state = {
-      recipe: null,
-      stepNum: null,
-      step: null
+      recipe: props.recipe,
+      stepNum: props.stepNum,
+      step: step,
     };
+
+    this.emitter = props.emitter;
     
     this.styles = EStyleSheet.create({
       mainContainer: {
@@ -36,19 +41,24 @@ class AbstractStep extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
+      },
+      bottomBar: {
+        backgroundColor: '#2A5E91',
+        padding: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
       }
     });
-
   }
 
-  componentDidMount() {
-    var step = this.props.recipe.steps[this.props.stepNum];
-    this.setState({
-      recipe: this.props.recipe,
-      stepNum: this.props.stepNum,
-      step: step
-    });
+  _nextStep() {
+    this.emitter.emit('nextStep');
   }
+
+  _prevStep() {
+    this.emitter.emit('prevStep');
+  }
+
 }
 
 module.exports = AbstractStep;

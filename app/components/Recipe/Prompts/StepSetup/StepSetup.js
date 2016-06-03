@@ -24,6 +24,7 @@ class StepSetup extends AbstractStep {
         <View style={this.styles.stepContainer}>
           <Text>Setup! {this.state.stepNum}</Text>
         </View>
+        <TouchableHighlight style={this.styles.bottomBar} onPress={() => this._nextStep()}><Text>Next</Text></TouchableHighlight>
       </View>
     );
     return main;

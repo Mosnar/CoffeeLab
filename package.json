@@ -9,6 +9,7 @@
   "dependencies": {
     "convert-units": "^1.0.1",
     "es6-enum": "^1.0.3",
+    "fbemitter": "^2.0.2",
     "react": "15.1.0",
     "react-native": "^0.27.0-rc2",
     "react-native-extended-stylesheet": "^0.2.0",

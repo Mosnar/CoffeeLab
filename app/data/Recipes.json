@@ -20,45 +20,37 @@
     },
     "steps": [
       {
-        "step": 0,
         "type": "setup",
       },
       {
-        "step": 1,
         "type": "prompt",
         "text": "Assemble inverted AeroPress and put in coffee"
       },
       {
-        "step": 2,
         "type": "prompt",
         "text": "Add {60|wt} of water"
       },
       {
-        "step": 3,
         "type": "timed",
         "amount": 15,
         "text": "Turbulent wiggle"
       },
       {
-        "step": 4,
         "type": "timed",
         "amount": 30,
         "text": "Allow bloom"
       },
       {
-        "step": 5,
         "type": "timed",
         "amount": 10,
         "text": "Add {170|wt} of water"
       },
       {
-        "step": 6,
         "type": "timed",
         "amount": 45,
         "text": "Press into cup"
       },
       {
-        "step": 7,
         "type": "done",
         "text": "Enjoy"
       }

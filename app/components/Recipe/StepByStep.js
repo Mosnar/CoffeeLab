@@ -11,8 +11,7 @@ import {
 } from 'react-native';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
-
-import FilterParser from '../../filters/FilterParser';
+var {EventEmitter} = require('fbemitter');
 
 const styles = EStyleSheet.create({
   mainContainer: {
@@ -27,24 +26,41 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-  },
-  bottomBar: {
-    backgroundColor: '#2A5E91',
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
   }
 });
+
 class StepByStep extends Component {
   constructor(props) {
     super(props);
+    this.emitter = new EventEmitter();
+    this._registerEventListeners();
     this.state = {
       currentStepNum: 0,
       recipe: props.recipe
     }
   }
 
-  _goToStep(step) {
+  _registerEventListeners() {
+    this.emitter.addListener('nextStep', this._nextStep.bind(this));
+    this.emitter.addListener('prevStep', this._prevStep.bind(this));
+  }
+
+  _nextStep() {
+    return this._goToStep();
+  }
+
+  _prevStep() {
+    return this._goToStep(--this.state.currentStepNum);
+  }
+
+  /**
+   * Goes to a particular step and emits a "stepChanged" event with an object payload of newStep and oldStep
+   * @param step Optional step
+   * @returns {number}
+   * @private
+   */
+  _goToStep(step:?int):int {
+    var oldStep = this.state.currentStepNum;
     var currentStep = this.state.currentStepNum;
     if (step === null || step === undefined) {
       currentStep = currentStep + 1;
@@ -56,14 +72,26 @@ class StepByStep extends Component {
         currentStepNum: step
       });
     }
+    this.emitter.emit('stepChanged', {newStep: this.state.currentStepNum, oldStep: oldStep});
+    return this.state.currentStepNum;
   }
 
+  /**
+   * Sets state to step 0 on mount
+   */
   componentDidMount() {
     this._goToStep(0);
   }
 
-  _renderStep(stepNum) {
+  /**
+   * Renders the appropriate step component.
+   * @param stepNum Step number
+   * @returns {*|Element}
+   * @private
+   */
+  _renderStep(stepNum:int) {
     // TODO: Move this to another file
+    // TODO: Add failsafe for missing component
     var stepMap = {
       'setup': require('./Prompts/StepSetup/StepSetup'),
       'prompt': require('./Prompts/StepPromp/StepPrompt'),
@@ -73,19 +101,18 @@ class StepByStep extends Component {
 
     var stepName = this.state.recipe.steps[stepNum].type;
 
+    if (!stepName in stepMap) console.error("Couldn't find step", stepName, stepNum);
     var stepClass = stepMap[stepName];
 
-    if (!stepClass) console.error("Failed to find step class");
-    return React.createElement(stepClass, {recipe: this.state.recipe, stepNum: stepNum});
+    return React.createElement(stepClass, {recipe: this.state.recipe, stepNum: stepNum, emitter: this.emitter});
   }
-  
+
   render() {
     var main = (
       <View style={styles.mainContainer}>
         <View style={styles.stepContainer}>
           {this._renderStep(this.state.currentStepNum)}
         </View>
-        <TouchableHighlight style={styles.bottomBar} onPress={() => this._goToStep()}><Text>Next</Text></TouchableHighlight>
       </View>
     );
     return main;

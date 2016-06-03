@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
 
   titleBar: {
     backgroundColor: '#2A5E91',
-    paddingTop: 30,
     paddingBottom: 10,
     flexDirection: 'row'
   },
@@ -69,10 +68,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   backBar: {
-    backgroundColor: 'black',
+    paddingTop: 10,
+    backgroundColor: '#2A5E91',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    opacity: .8
   }
 });
 
@@ -134,6 +133,11 @@ class Recipe extends Component {
 
     var main = (
       <View style={{flex: 1}}>
+        <View style={styles.backBar}>
+          <View style={styles.navButton}>
+            {backButton}
+          </View>
+        </View>
         <View style={styles.titleBar}>
           <Text style={styles.toolbarTitle}>{meta.name}</Text>
         </View>
@@ -142,11 +146,6 @@ class Recipe extends Component {
         </View>
         <RecipeDetails details={details}/>
         {this.renderButtons()}
-        <View style={styles.backBar}>
-          <View style={styles.navButton}>
-            {backButton}
-          </View>
-        </View>
       </View>
     );
     return main;

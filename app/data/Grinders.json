@@ -1,6 +1,16 @@
 [
   {
-    "grinderInfo": {
+    "grinder": {
+      "mfr": "Generic",
+      "grind": {
+        "step": "int",
+        "fine": "1",
+        "coarse": "10"
+      }
+    }
+  },
+  {
+    "grinder": {
       "mfr": "Mahlkonig",
       "model": "EK43",
       "power": "electric",

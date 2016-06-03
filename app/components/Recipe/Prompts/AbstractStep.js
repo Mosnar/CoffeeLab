@@ -19,6 +19,9 @@ class AbstractStep extends Component {
     super(props);
 
     var step = props.recipe.steps[this.props.stepNum];
+    this.recipe = props.recipe;
+    this.stepNum = props.stepNum;
+    this.step = step;
 
     this.state = {
       recipe: props.recipe,
@@ -40,14 +43,14 @@ class AbstractStep extends Component {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
       },
-      bottomBar: {
+      button: {
         backgroundColor: '#2A5E91',
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-      }
+      },
     });
   }
 

@@ -20,7 +20,7 @@
     },
     "steps": [
       {
-        "type": "setup",
+        "type": "setup"
       },
       {
         "type": "prompt",

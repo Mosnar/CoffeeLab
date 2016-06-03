@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import React, {
   Component,
@@ -10,21 +10,73 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+import convert from '../../../../filters/Convert';
+
 var AbstractStep = require('../AbstractStep');
+
 
 class StepSetup extends AbstractStep {
 
   constructor(props) {
     super(props);
+    this.details = this.recipe.details;
+
+    this.WT_FROM = 'g';
+    this.WT_TO = 'g';
+    this.TMP_FROM = 'C';
+    this.TMP_TO = 'F';
+  }
+
+  _renderWaterDetails(weight, temp) {
+    var weightStr = convert({
+      val: weight,
+      from: this.WT_FROM,
+      to: this.WT_TO,
+      displayUnits: true,
+    });
+
+    var tempStr = convert({
+      val: temp,
+      from: this.WT_FROM,
+      to: this.WT_TO,
+      displayUnits: true,
+    });
+
+    return (
+      <View>
+        <Text>You need {weightStr} of {tempStr} water.</Text>
+      </View>
+    );
+  }
+
+  _renderCoffeeDetails(coffeeWeight, grindDetails) {
+    var weightStr = convert({
+      val: coffeeWeight,
+      from: this.WT_FROM,
+      to: this.WT_TO,
+      displayUnits: true,
+    });
+
+    return (
+      <View>
+        <Text>You need {weightStr} of fresh ground coffee.</Text>
+      </View>
+    );
   }
 
   render() {
+    var coffeeWeight = this.details.coffeeWeight;
+    var waterTemp = this.details.brewTemp;
+    var waterWeight = this.details.waterWeight;
+    var grindDetails = this.recipe.grind;
     var main = (
       <View style={this.styles.mainContainer}>
         <View style={this.styles.stepContainer}>
-          <Text>Setup! {this.state.stepNum}</Text>
+          {this._renderWaterDetails(waterWeight, waterTemp)}
+          {this._renderCoffeeDetails(coffeeWeight, grindDetails)}
         </View>
-        <TouchableHighlight style={this.styles.bottomBar} onPress={() => this._nextStep()}><Text>Next</Text></TouchableHighlight>
+        <TouchableHighlight style={this.styles.button}
+                            onPress={() => this._nextStep()}><Text>Next</Text></TouchableHighlight>
       </View>
     );
     return main;

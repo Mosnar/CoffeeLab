@@ -38,11 +38,19 @@ class StepByStep extends Component {
       currentStepNum: 0,
       recipe: props.recipe
     }
+    this.numSteps = props.recipe.steps.length;
   }
 
   _registerEventListeners() {
     this.emitter.addListener('nextStep', this._nextStep.bind(this));
     this.emitter.addListener('prevStep', this._prevStep.bind(this));
+  }
+
+  _onLastStep() {
+    if (this.state.currentStepNum == this.numSteps - 1) {
+      return true;
+    }
+    return false;
   }
 
   _nextStep() {
@@ -60,6 +68,12 @@ class StepByStep extends Component {
    * @private
    */
   _goToStep(step:?int):int {
+    if (this._onLastStep()) {
+      return false;
+    }
+    if (step < 0) {
+      return false;
+    }
     var oldStep = this.state.currentStepNum;
     var currentStep = this.state.currentStepNum;
     if (step === null || step === undefined) {

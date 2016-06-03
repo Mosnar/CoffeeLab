@@ -4,5 +4,7 @@ export default {
   $secondaryColor: '#870217',
   $accentColor: '#AD031E',
   $textColor: '#fff',
-  $backgroundColor: '#EAEAEA'
+  $backgroundColor: '#EAEAEA',
+
+  $fontSize: 10
 }

@@ -16,7 +16,7 @@
         "grinder": "EK43",
         "setting": "7.3"
       },
-      "hardware": ["aeropress"]
+      "tools": []
     },
     "steps": [
       {
@@ -56,6 +56,11 @@
         "type": "timed",
         "amount": 45,
         "text": "Press into cup"
+      },
+      {
+        "step": 7,
+        "type": "done",
+        "text": "Enjoy"
       }
     ]
   }

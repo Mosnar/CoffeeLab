@@ -7,27 +7,44 @@ import React, {
 import {
   Text,
   View,
-  StyleSheet,
   TouchableHighlight,
 } from 'react-native';
 
+import EStyleSheet from 'react-native-extended-stylesheet';
+
 import FilterParser from '../../filters/FilterParser';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   mainContainer: {
+    backgroundColor: '$backgroundColor',
     flex: 1,
-    padding: 20
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  stepContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  bottomBar: {
+    backgroundColor: '#2A5E91',
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 });
 class StepByStep extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStepNum: 0
+      currentStepNum: 0,
+      recipe: props.recipe
     }
   }
 
-  goToStep(step) {
+  _goToStep(step) {
     var currentStep = this.state.currentStepNum;
     if (step === null || step === undefined) {
       currentStep = currentStep + 1;
@@ -39,30 +56,37 @@ class StepByStep extends Component {
         currentStepNum: step
       });
     }
-    console.warn("Next step", currentStep);
   }
 
   componentDidMount() {
-    this.goToStep(0);
+    this._goToStep(0);
+  }
+
+  _renderStep(stepNum) {
+    // TODO: Move this to another file
+    var stepMap = {
+      'setup': require('./Prompts/StepSetup/StepSetup'),
+      'prompt': require('./Prompts/StepPromp/StepPrompt'),
+      'timed': require('./Prompts/StepTimedPrompt/StepTimedPrompt'),
+      'done': require('./Prompts/StepDone/StepDone')
+    };
+
+    var stepName = this.state.recipe.steps[stepNum].type;
+
+    var stepClass = stepMap[stepName];
+
+    if (!stepClass) console.error("Failed to find step class");
+    return React.createElement(stepClass, {recipe: this.state.recipe, stepNum: stepNum});
   }
   
-
   render() {
-    var recipe = this.props.recipe;
-    var meta = recipe.meta;
-    var details = recipe.details;
-    var steps = recipe.steps;
-    var numSteps = steps.length;
-
-    var currentStepData = steps[this.state.currentStepNum];
-
-
     var main = (
-      <TouchableHighlight onPress={() => this.goToStep()}>
-        <View style={styles.mainContainer}>
-          <Text>Step {currentStepData.type}</Text>
+      <View style={styles.mainContainer}>
+        <View style={styles.stepContainer}>
+          {this._renderStep(this.state.currentStepNum)}
         </View>
-      </TouchableHighlight>
+        <TouchableHighlight style={styles.bottomBar} onPress={() => this._goToStep()}><Text>Next</Text></TouchableHighlight>
+      </View>
     );
     return main;
   }

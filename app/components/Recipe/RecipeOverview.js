@@ -16,14 +16,6 @@ var StepByStep = require('./StepByStep');
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-var StepSetup = require('./Prompts/StepSetup/StepSetup');
-
-const stepMap = {
-  'setup': 'StepSetup',
-  'prompt': 'StepPrompt',
-  'timed': 'StepTimedPrompt'
-};
-
 const styles = EStyleSheet.create({
   navButton: {
     flex: 1

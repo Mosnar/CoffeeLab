@@ -12,8 +12,17 @@ import {
 } from 'react-native';
 
 var RecipeDetails = require('./RecipeDetails');
+var StepByStep = require('./StepByStep');
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+var StepSetup = require('./Prompts/StepSetup/StepSetup');
+
+const stepMap = {
+  'setup': 'StepSetup',
+  'prompt': 'StepPrompt',
+  'timed': 'StepTimedPrompt'
+};
 
 const styles = StyleSheet.create({
   navButton: {
@@ -78,51 +87,29 @@ const styles = StyleSheet.create({
 class Recipe extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentStep: 0
-    }
-  }
-
-  goToStep(step) {
-    var currentStep = this.state.currentStep;
-    if (step === null) {
-      currentStep = currentStep + 1;
-      this.setState({
-        currentStep: currentStep
-      });
-    } else {
-      this.setState({
-        currentStep: step
-      });
-    }
   }
 
   _goBack() {
     this.props.navigator.pop();
   }
 
-  componentDidMount() {
-    this.goToStep(0);
+  _startGuide() {
+    this.props.navigator.push({
+      component: StepByStep,
+      title: "Recipe",
+      navigationBarHidden: true,
+      passProps: {
+        recipe: this.props.recipe,
+        navigator: this.props.navigator
+      }
+    });
   }
+
 
   render() {
     var recipe = this.props.recipe;
     var meta = recipe.meta;
     var details = recipe.details;
-    var steps = recipe.steps;
-    var numSteps = steps.length;
-
-    var currentStepData = this.props.recipe.steps[this.state.currentStep];
-
-    var CurrentStepLayout = {};
-
-    // var stepsView = steps.map((r, i) => {
-    //     return (
-    //       <View key={i}>
-    //         <Text>{r.text}</Text>
-    //       </View>
-    //     );
-    // });
 
     const backButton = (
       <Icon.Button name="angle-left" backgroundColor="transparent" onPress={()=>{this._goBack()}}>
@@ -191,17 +178,20 @@ class Recipe extends Component {
         backgroundColor: '#2A5E91'
       }
     });
+
+    // TODO: Change start guide icon to a cute chemex icon or something
     return (
       <View style={btnStyles.container}>
-        <TouchableHighlight style={btnStyles.btnBig}>
+        <TouchableHighlight onPress={() => this._startGuide()} style={btnStyles.btnBig}>
           <View style={btnStyles.btnHeightWrapper}>
             <View style={btnStyles.btnHeightFiller}>
-              <View style={btnStyles.btnIcon}><Icon name="play-circle-o" size={100} color="#000" /></View>
+              <View style={btnStyles.btnIcon}><Icon name="play-circle-o" size={100} color="#000"/></View>
               <Text style={btnStyles.btnText}>Start Guide</Text>
             </View>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight style={btnStyles.viewStepsButton}><Text style={btnStyles.viewStepsText}>View Steps</Text></TouchableHighlight>
+        <TouchableHighlight style={btnStyles.viewStepsButton}><Text
+          style={btnStyles.viewStepsText}>View Steps</Text></TouchableHighlight>
       </View>
     )
   }

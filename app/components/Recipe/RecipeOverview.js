@@ -155,7 +155,7 @@ class Recipe extends Component {
     var btnStyles = StyleSheet.create({
       container: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center'
       },
       btnBig: {
@@ -167,7 +167,7 @@ class Recipe extends Component {
         flexDirection: 'column'
       },
       btnText: {
-        color: '#63498A',
+        color: '#000',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 20,
@@ -181,26 +181,27 @@ class Recipe extends Component {
         alignItems: 'center',
         marginBottom: 20
       },
+      viewStepsText: {
+        textAlign: 'center',
+        color: '#fff',
+        fontWeight: 'bold'
+      },
+      viewStepsButton: {
+        padding: 10,
+        backgroundColor: '#2A5E91'
+      }
     });
     return (
       <View style={btnStyles.container}>
         <TouchableHighlight style={btnStyles.btnBig}>
           <View style={btnStyles.btnHeightWrapper}>
             <View style={btnStyles.btnHeightFiller}>
-              <View style={btnStyles.btnIcon}><Icon name="list-ol" size={100} color="#63498A" /></View>
-              <Text style={btnStyles.btnText}>View Steps</Text>
-            </View>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight style={btnStyles.btnBig}>
-          <View style={btnStyles.btnHeightWrapper}>
-            <View style={btnStyles.btnHeightFiller}>
-              <View style={btnStyles.btnIcon}><Icon name="play-circle-o" size={100} color="#63498A" /></View>
+              <View style={btnStyles.btnIcon}><Icon name="play-circle-o" size={100} color="#000" /></View>
               <Text style={btnStyles.btnText}>Start Guide</Text>
             </View>
           </View>
         </TouchableHighlight>
+        <TouchableHighlight style={btnStyles.viewStepsButton}><Text style={btnStyles.viewStepsText}>View Steps</Text></TouchableHighlight>
       </View>
     )
   }

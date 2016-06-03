@@ -6,19 +6,21 @@ import React, {
 
 import {
   Text,
-  View,
-  StyleSheet
+  View
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+// Base stylesheet
+import theme from '../styles/theme';
 
 var Explore = require('./Explore');
 
 
 class App extends Component {
-
   constructor(props) {
     super(props);
+    EStyleSheet.build(theme);
   }
 
 
@@ -28,13 +30,5 @@ class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
-  }
-});
 
 module.exports = App;

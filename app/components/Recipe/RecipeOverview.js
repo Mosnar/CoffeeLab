@@ -7,9 +7,9 @@ import React, {
 import {
   Text,
   View,
-  StyleSheet,
   TouchableHighlight,
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 var RecipeDetails = require('./RecipeDetails');
 var StepByStep = require('./StepByStep');
@@ -24,7 +24,7 @@ const stepMap = {
   'timed': 'StepTimedPrompt'
 };
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   navButton: {
     flex: 1
   },
@@ -139,8 +139,9 @@ class Recipe extends Component {
   }
 
   renderButtons() {
-    var btnStyles = StyleSheet.create({
+    var btnStyles = EStyleSheet.create({
       container: {
+        backgroundColor: '$backgroundColor',
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center'

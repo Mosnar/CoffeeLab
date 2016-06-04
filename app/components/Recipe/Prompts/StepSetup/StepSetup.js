@@ -35,9 +35,10 @@ class StepSetup extends AbstractStep {
 
     var tempStr = convert({
       val: temp,
-      from: this.WT_FROM,
-      to: this.WT_TO,
+      from: this.TMP_FROM,
+      to: this.TMP_TO,
       displayUnits: true,
+      precision: 0
     });
 
     return (

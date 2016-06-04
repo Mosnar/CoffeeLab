@@ -6,15 +6,19 @@
  * @param originalText
  */
 export default function (originalText:String):String {
-  var convert = require('./Convert');
-  const REGEX_WT = new RegExp(/{(.+)\|(\d+)}/, 'gi');
+  var convert = require('./Convert').default;
+  var REGEX_WT = /{(.+)\|(.+)}/gi;
+
+  if (!originalText || originalText.length == 0) {
+    return "";
+  }
 
   /**
    * Todo: Export to store config
    * @type {string}
    */
-  const WT_TO = 'g';
-  const WT_FROM = 'g';
+  var WT_TO = 'g';
+  var WT_FROM = 'g';
 
   return originalText.replace(REGEX_WT, function (original, type, val) {
     switch (type) {
@@ -22,12 +26,10 @@ export default function (originalText:String):String {
         // Convert weight from standard grams to whatever the user has set
         return convert({
           val: val,
-          from: this.WT_FROM,
-          to: this.WT_TO,
+          from: WT_FROM,
+          to: WT_TO,
           displayUnits: true
         });
-      case 'tm':
-        return original;
       default:
         return original;
     }

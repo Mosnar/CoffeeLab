@@ -13,27 +13,21 @@ import {
 var AbstractStep = require('../AbstractStep');
 
 
-class StepTimedPrompt extends AbstractStep {
+class StepDone extends AbstractStep {
+
   constructor(props) {
     super(props);
   }
 
 
   render() {
-    var step = this.props.recipe.steps[this.props.stepNum];
-    var text = this._applyFilters(step.text);
-    var time = this.props.time;
-
     var main = (
       <View style={this.styles.mainContainer}>
         <Text>
-          {text}
-        </Text>
-        <Text>
-          {time}
+          You're done! Good job!
         </Text>
         <TouchableHighlight style={this.styles.button}
-                            onPress={() => this._nextStep()}><Text>Next</Text></TouchableHighlight>
+                            onPress={() => this._endGuide()}><Text>Next</Text></TouchableHighlight>
       </View>
     );
     return main;
@@ -41,4 +35,4 @@ class StepTimedPrompt extends AbstractStep {
 
 }
 
-module.exports = StepTimedPrompt;
+module.exports = StepDone;

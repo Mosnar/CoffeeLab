@@ -28,7 +28,7 @@
       },
       {
         "type": "prompt",
-        "text": "Add {60|wt} of water"
+        "text": "Add {wt|60} of water"
       },
       {
         "type": "timed",
@@ -43,7 +43,7 @@
       {
         "type": "timed",
         "amount": 10,
-        "text": "Add {170|wt} of water"
+        "text": "Add {wt|170} of water"
       },
       {
         "type": "timed",

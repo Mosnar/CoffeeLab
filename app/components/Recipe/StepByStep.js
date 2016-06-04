@@ -25,11 +25,16 @@ const styles = EStyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
+    flexDirection: 'row'
   }
 });
 
 class StepByStep extends Component {
+  emitter = null;
+  stepMap = null;
+  numSteps = null;
+  state = null;
+
   constructor(props) {
     super(props);
     this.emitter = new EventEmitter();
@@ -37,20 +42,26 @@ class StepByStep extends Component {
     this.state = {
       currentStepNum: 0,
       recipe: props.recipe
-    }
+    };
     this.numSteps = props.recipe.steps.length;
+
+    this.stepMap = {
+      'setup': React.createFactory(require('./Prompts/StepSetup/StepSetup')),
+      'prompt': React.createFactory(require('./Prompts/StepPromp/StepPrompt')),
+      'timed': React.createFactory(require('./Prompts/StepTimedPrompt/StepTimedPrompt')),
+      'done': React.createFactory(require('./Prompts/StepDone/StepDone'))
+    };
   }
 
   _registerEventListeners() {
     this.emitter.addListener('nextStep', this._nextStep.bind(this));
     this.emitter.addListener('prevStep', this._prevStep.bind(this));
+    this.emitter.addListener('endGuide', this._endGuide.bind(this));
   }
 
   _onLastStep() {
-    if (this.state.currentStepNum == this.numSteps - 1) {
-      return true;
-    }
-    return false;
+    return this.state.currentStepNum == this.numSteps - 1;
+
   }
 
   _nextStep() {
@@ -59,6 +70,10 @@ class StepByStep extends Component {
 
   _prevStep() {
     return this._goToStep(--this.state.currentStepNum);
+  }
+
+  _endGuide() {
+    this.props.navigator.pop();
   }
 
   /**
@@ -74,6 +89,7 @@ class StepByStep extends Component {
     if (step < 0) {
       return false;
     }
+
     var oldStep = this.state.currentStepNum;
     var currentStep = this.state.currentStepNum;
     if (step === null || step === undefined) {
@@ -106,26 +122,22 @@ class StepByStep extends Component {
   _renderStep(stepNum:int) {
     // TODO: Move this to another file
     // TODO: Add failsafe for missing component
-    var stepMap = {
-      'setup': require('./Prompts/StepSetup/StepSetup'),
-      'prompt': require('./Prompts/StepPromp/StepPrompt'),
-      'timed': require('./Prompts/StepTimedPrompt/StepTimedPrompt'),
-      'done': require('./Prompts/StepDone/StepDone')
-    };
-
     var stepName = this.state.recipe.steps[stepNum].type;
 
-    if (!stepName in stepMap) console.error("Couldn't find step", stepName, stepNum);
-    var stepClass = stepMap[stepName];
+    if (!stepName in this.stepMap) console.error("Couldn't find step", stepName, stepNum);
+    var stepClass = this.stepMap[stepName];
 
-    return React.createElement(stepClass, {recipe: this.state.recipe, stepNum: stepNum, emitter: this.emitter});
+    var data = {recipe: this.state.recipe, stepNum: this.state.currentStepNum, emitter: this.emitter};
+    var elem = stepClass(data);
+    return elem;
   }
 
   render() {
+    var stepDOM = this._renderStep(this.state.currentStepNum);
     var main = (
       <View style={styles.mainContainer}>
         <View style={styles.stepContainer}>
-          {this._renderStep(this.state.currentStepNum)}
+          {stepDOM}
         </View>
       </View>
     );

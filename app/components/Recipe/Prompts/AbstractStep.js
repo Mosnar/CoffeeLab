@@ -12,25 +12,17 @@ import {
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
+import FilterParser from '../../../filters/FilterParser';
+
 class AbstractStep extends Component {
   styles = null;
-  
+  listener = null;
+
   constructor(props) {
     super(props);
 
-    var step = props.recipe.steps[this.props.stepNum];
-    this.recipe = props.recipe;
-    this.stepNum = props.stepNum;
-    this.step = step;
-
-    this.state = {
-      recipe: props.recipe,
-      stepNum: props.stepNum,
-      step: step,
-    };
-
     this.emitter = props.emitter;
-    
+
     this.styles = EStyleSheet.create({
       mainContainer: {
         backgroundColor: '$backgroundColor',
@@ -54,12 +46,20 @@ class AbstractStep extends Component {
     });
   }
 
+  _endGuide() {
+    this.emitter.emit('endGuide');
+  }
+
   _nextStep() {
     this.emitter.emit('nextStep');
   }
 
   _prevStep() {
     this.emitter.emit('prevStep');
+  }
+
+  _applyFilters(text:string):string {
+    return FilterParser(text);
   }
 
 }

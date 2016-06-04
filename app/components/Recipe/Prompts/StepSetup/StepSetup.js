@@ -19,8 +19,6 @@ class StepSetup extends AbstractStep {
 
   constructor(props) {
     super(props);
-    this.details = this.recipe.details;
-
     this.WT_FROM = 'g';
     this.WT_TO = 'g';
     this.TMP_FROM = 'C';
@@ -65,10 +63,10 @@ class StepSetup extends AbstractStep {
   }
 
   render() {
-    var coffeeWeight = this.details.coffeeWeight;
-    var waterTemp = this.details.brewTemp;
-    var waterWeight = this.details.waterWeight;
-    var grindDetails = this.recipe.grind;
+    var coffeeWeight = this.props.recipe.details.coffeeWeight;
+    var waterTemp = this.props.recipe.details.brewTemp;
+    var waterWeight = this.props.recipe.details.waterWeight;
+    var grindDetails = this.props.recipe.grind;
     var main = (
       <View style={this.styles.mainContainer}>
         <View style={this.styles.stepContainer}>

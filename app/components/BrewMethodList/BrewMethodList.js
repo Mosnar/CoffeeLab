@@ -11,9 +11,11 @@ import {
   Image,
   StyleSheet,
   ListView,
-  NavigatorIOS,
-  TouchableHighlight
+  TouchableHighlight,
+  NavigationExperimental,
 } from 'react-native';
+
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 var Recipes = require("../../containers/Recipes");
 var Featured = require("./BrewMethodFeatured");

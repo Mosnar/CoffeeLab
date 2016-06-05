@@ -2,10 +2,12 @@
   {
     "id": 0,
     "meta": {
-      "name": "1st Place World AeroPress Championship",
-      "authors": ["Lukas Zahradnik"],
-      "source": "",
-      "brewMethod": "aeropress",
+      "name": "World AeroPress Championship 1st Place",
+//      "award": "first" // first, second, third
+      "date": "1/4/16", // d/m/y
+      "authors": ["Lukas Zahradnik"], // First listed author will be shown
+      "source": "", // URL
+      "brewMethod": "aeropress", // unique brew method name
       "tags": ["inverted"]
     },
     "details": {

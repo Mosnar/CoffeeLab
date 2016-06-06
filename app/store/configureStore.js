@@ -26,5 +26,5 @@ function configureStore(onComplete: ?() => void) {
   return store;
 }
 
-
+export default configureStore;
 module.exports = configureStore;

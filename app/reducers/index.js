@@ -1,27 +1,47 @@
-import {combineReducers} from "redux";
-import * as types from "../actions";
+import {combineReducers} from 'redux'
+import * as NavigationStateUtils from 'NavigationStateUtils'
 
-const data = (state = {
-  isFetching: false,
-  message: ""
-}, action) => {
-  switch (action.type) {
-    case types.REQUEST_DATA:
-      return Object.assign({}, state, {
-        isFetching: true
-      });
-    case types.RECEIVE_DATA:
-      return Object.assign({}, state, {
-        isFetching: false,
-        message: action.data.message
-      });
-    default:
-      return state;
-  }
+import {NAV_PUSH, NAV_POP, NAV_JUMP_TO_KEY, NAV_JUMP_TO_INDEX, NAV_RESET} from '../actions'
+
+const initialNavState = {
+  key: 'MainNavigation',
+  index: 0,
+  children: [
+    {key: 'explore', title: 'Explore'}
+  ]
 };
 
-const rootReducer = combineReducers({
-  data
+function navigationState(state = initialNavState, action) {
+  switch (action.type) {
+    case NAV_PUSH:
+      if (state.children[state.index].key === (action.state && action.state.key)) return state
+      return NavigationStateUtils.push(state, action.state)
+
+    case NAV_POP:
+      if (state.index === 0 || state.children.length === 1) return state
+      return NavigationStateUtils.pop(state)
+
+    case NAV_JUMP_TO_KEY:
+      return NavigationStateUtils.jumpTo(state, action.key)
+
+    case NAV_JUMP_TO_INDEX:
+      return NavigationStateUtils.jumpToIndex(state, action.index)
+
+    case NAV_RESET:
+      return {
+        ...state,
+        index: action.index,
+        children: action.children
+      };
+
+    default:
+      return state
+  }
+}
+
+const appReducers = combineReducers({
+  navigationState
 });
 
-module.exports = rootReducer;
+export default appReducers
+module.exports = appReducers;

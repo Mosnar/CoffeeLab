@@ -2,24 +2,23 @@
 
 
 import React, {
-  Component,
+  PropTypes
 } from 'react';
 
 import {
   Text,
   View,
   Image,
-  StyleSheet,
   ListView,
   TouchableHighlight,
-  NavigationExperimental,
 } from 'react-native';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 var Recipes = require("../../containers/Recipes");
 var Featured = require("./BrewMethodFeatured");
-const styles = StyleSheet.create({
+
+const styles = EStyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -42,66 +41,32 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: '#dddddd'
-  },
-
-  // TODO: Move this to another component
-  featuredContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    paddingTop: 50,
-    paddingBottom: 50,
-    backgroundColor: '#033159',
-    opacity: .8,
-  },
-
-  backgroundImageWrapper: {
-    position: 'absolute',
-    top: 0, bottom: 0, left: 0, right: 0
-  },
-
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
-
-  featuredSeparator: {
-    height: 2,
-    backgroundColor: '#F25260'
-  },
-
-  featuredTitle: {
-    fontSize: 20,
-    color: '#fff',
-    textAlign: 'center'
-  },
-
-  featuredAuthor: {
-    fontSize: 15,
-    color: '#fff',
-    textAlign: 'center',
-    fontStyle: 'italic'
-  },
-  featuredAnnouncement: {
-    fontSize: 10,
-    color: '#fff',
-    textAlign: 'center'
   }
 });
 
 var BREW_METHOD_DATA = require('../../data/BrewMethods.json');
 
+
+const BrewMethodList = (props) => {
+
+  return (
+
+    <View style={styles.container}>
+      <Text style={styles.title}>First Screen</Text>
+    </View>
+  )
+};
+
+BrewMethodList.propTypes = {
+
+};
+
+
 class BrewMethodList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      })
-    };
+
   }
 
   componentDidMount() {

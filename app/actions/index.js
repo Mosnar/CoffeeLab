@@ -1,25 +1,46 @@
-export const REQUEST_DATA = "REQUEST_DATA";
-export const RECEIVE_DATA = "RECEIVE_DATA";
+// *** Action Types ***
+export const NAVIGATE = 'NAVIGATE';
+export const NAV_PUSH = 'NAV_PUSH';
+export const NAV_POP = 'NAV_POP';
+export const NAV_JUMP_TO_KEY = 'NAV_JUMP_TO_KEY';
+export const NAV_JUMP_TO_INDEX = 'NAV_JUMP_TO_INDEX';
+export const NAV_RESET = 'NAV_RESET';
 
-export const requestData = (): Object => {
+
+// *** Action Creators ***
+// The following action creators were derived from NavigationStackReducer
+export function navigatePush(state) {
+  state = typeof state === 'string' ? {key: state, title: state} : state
   return {
-    type: REQUEST_DATA
-  };
-};
+    type: NAV_PUSH,
+    state
+  }
+}
 
-export const receiveData = (data: Object): Object => {
+export function navigatePop() {
   return {
-    type: RECEIVE_DATA,
-    data
-  };
-};
+    type: NAV_POP
+  }
+}
 
-export const fetchData = (): Function => {
-  return (dispatch) => {
-    dispatch(requestData());
-    return setTimeout(() => {
-      const data = {message: "Hello"};
-      dispatch(receiveData(data));
-    }, 300);
+export function navigateJumpToKey(key) {
+  return {
+    type: NAV_JUMP_TO_KEY,
+    key
+  }
+}
+
+export function navigateJumpToIndex(index) {
+  return {
+    type: NAV_JUMP_TO_INDEX,
+    index
+  }
+}
+
+export function navigateReset(children, index) {
+  return {
+    type: NAV_RESET,
+    index,
+    children
   };
-};
+}

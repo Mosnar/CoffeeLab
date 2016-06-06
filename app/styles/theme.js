@@ -8,5 +8,12 @@ export default {
   $textColor: '#fff',
   $backgroundColor: '#EAEAEA',
 
-  $fontSize: 10
+  $fontSize: 10,
+
+  outerContainer: {
+    flex: 1
+  },
+  container: {
+    flex: 1
+  }
 }

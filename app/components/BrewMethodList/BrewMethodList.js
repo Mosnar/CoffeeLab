@@ -2,7 +2,8 @@
 
 
 import React, {
-  Component
+  Component,
+  PropTypes
 } from 'react';
 
 import {
@@ -12,6 +13,8 @@ import {
   ListView,
   TouchableHighlight,
 } from 'react-native';
+
+import { connect } from 'react-redux';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -48,16 +51,70 @@ const styles = EStyleSheet.create({
 export default class BrewMethodList extends Component {
   constructor(props) {
     super(props);
-    let { dispatch } = props;
+
     this.props.loadBrewMethods();
+  }
+
+  componentDidMount() {
   }
 
   render() {
     if (this.props.brewMethodsLoaded === true) {
-      return (<Text style={{paddingTop: 70}}>Brew methods are loaded</Text>);
+      return this._renderList();
     } else {
-      return (<Text style={{paddingTop: 70}}>Brew methods are still loading</Text>);
+      return this._renderLoading();
     }
+  }
+
+  _renderLoading() {
+    return (<Text style={{paddingTop: 70}}>Brew methods are still loading</Text>);
+  }
+
+  _renderList() {
+    return (
+      <ListView
+        dataSource={this.props.dataSource}
+        renderRow={this.renderBrewMethod.bind(this)}
+        style={styles.listView}
+        renderHeader={this.renderHeader.bind(this)}
+      />
+    );
+  }
+
+
+  renderHeader() {
+    return (
+      <Featured />
+    );
+  }
+
+  renderBrewMethod(brewMethod) {
+    var methodInfo = brewMethod.methodInfo;
+    var {title, name} = methodInfo;
+    return (
+      <TouchableHighlight onPress={() => this._showRecipes(methodInfo)} underlayColor='#dddddd'>
+        <View>
+          <View style={styles.container}>
+            <Image
+              source={{uri: name}}
+              style={styles.thumbnail}/>
+            <View style={styles.rightContainer}>
+              <Text style={styles.title}>{title}</Text>
+            </View>
+          </View>
+          <View style={styles.separator}/>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
+  _showRecipes(method) {
+    var title = method.title + " Recipes";
+    // this.props.navigator.push({
+    //   component: Recipes,
+    //   title: title,
+    //   passProps: {method: method}
+    // });
   }
 }
 //  
@@ -114,4 +171,21 @@ export default class BrewMethodList extends Component {
 //   }
 // }
 
-module.exports = BrewMethodList;
+
+BrewMethodList.propTypes = {
+  dataSource: PropTypes.object,
+};
+
+const dataSource = new ListView.DataSource({
+  rowHasChanged: (r1, r2) => r1 !== r2,
+});
+
+
+function mapStateToProps(state) {
+  return {
+    dataSource: dataSource.cloneWithRows(state.brewMethodsState.brewMethodData),
+  };
+}
+
+const conn = connect(mapStateToProps)(BrewMethodList);
+module.exports = conn;

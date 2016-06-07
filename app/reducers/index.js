@@ -7,12 +7,18 @@ const initialNavState = {
   key: 'MainNavigation',
   index: 0,
   children: [
-    {key: 'explore', title: 'Explore'}
+    {key: 'explore', title: 'Explore'},
+    {key: 'recipes', title: 'Recipes'},
+    {key: 'recipeOverview', title: 'Recipe Overview'},
+    {key: 'brewGuide', title: 'Brew Guide'},
+    {key: 'settings', title: 'Settings'}
   ]
 };
 
 const initialBrewMethodListState = {
-  brewMethods: []
+  brewMethodData: [],
+  loadingBrewMethods: false,
+  brewMethodsLoaded: false,
 };
 
 function navigationState(state = initialNavState, action) {
@@ -43,21 +49,28 @@ function navigationState(state = initialNavState, action) {
   }
 }
 
-function brewMethodListState(state = initialBrewMethodListState, action) {
-  switch(action.type) {
-    case Actions.DATA_LOADED:
-          break;
-    case Actions.DATA_BREW_METHODS_ADD:
-          break;
+function brewMethodsState(state = initialBrewMethodListState, action) {
+  switch (action.type) {
+    case Actions.DATA_BREW_METHODS_LOAD_STARTED:
+      return Object.assign({}, state, {
+        ...state,
+        loadingBrewMethods: true
+      });
     case Actions.DATA_BREW_METHODS_LOADED:
-          break;
-    case Actions.DATA_BREW_METHODS_REMOVE:
-          break;
+      return Object.assign({}, state, {
+        ...state,
+        brewMethodData: action.brewMethods,
+        loadingBrewMethods: false,
+        brewMethodsLoaded: true
+      });
+    default:
+      return state;
   }
 }
 
 const appReducers = combineReducers({
-  navigationState
+  navigationState,
+  brewMethodsState
 });
 
 export default appReducers

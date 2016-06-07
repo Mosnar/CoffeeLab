@@ -11,16 +11,20 @@ import {
   NavigationExperimental
 } from 'react-native';
 
+import {bindActionCreators} from 'redux';
+
 import { connect } from 'react-redux';
 
 import {navigatePush, navigatePop} from '../actions'
+
+import * as actions from '../actions';
 
 const {
   AnimatedView: NavigationAnimatedView,
   Card: NavigationCard,
   Header: NavigationHeader,
   RootContainer: NavigationRootContainer
-} = NavigationExperimental
+} = NavigationExperimental;
 
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -92,9 +96,11 @@ App.propTypes = {
 
 export default connect(
   state => ({
-    navigationState: state.navigationState
+    navigationState: state.navigationState,
+    brewMethodsState: state.brewMethodsState
   }),
   dispatch => ({
+    actions: bindActionCreators(actions, dispatch),
     onNavigate: (action) => {
       // Two types of actions are likely to be passed, both representing "back"
       // style actions. Check if a type has been indicated, and try to match it.

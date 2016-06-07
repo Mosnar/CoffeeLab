@@ -48,6 +48,7 @@ const styles = EStyleSheet.create({
 export default class BrewMethodList extends Component {
   constructor(props) {
     super(props);
+    let { dispatch } = props;
     this.props.loadBrewMethods();
   }
 

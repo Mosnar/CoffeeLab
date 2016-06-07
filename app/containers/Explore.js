@@ -10,11 +10,14 @@ import { connect } from 'react-redux';
 var BrewMethodList = require('../components/BrewMethodList/BrewMethodList');
 
 class Explore extends Component {
-  
+  constructor(props) {
+    super(props);
+  }
   render() {
     const {state, actions} = this.props;
     return (
       <BrewMethodList
+        {...state}
         {...actions}
       />
     )
@@ -23,7 +26,7 @@ class Explore extends Component {
 
 
 
-module.exports = connect(state => ({
+const conn = connect(state => ({
     state: state.brewMethodsState
   }),
   (dispatch) => ({
@@ -31,3 +34,4 @@ module.exports = connect(state => ({
   })
 )(Explore);
 
+module.exports = conn;

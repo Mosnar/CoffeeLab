@@ -2,10 +2,6 @@
 
 import React, {Component} from 'react';
 
-import * as actions from '../actions';
-
-import {bindActionCreators} from 'redux';
-
 import { connect } from 'react-redux';
 var BrewMethodList = require('../components/BrewMethodList/BrewMethodList');
 
@@ -16,10 +12,7 @@ class Explore extends Component {
   render() {
     const {state, actions} = this.props;
     return (
-      <BrewMethodList
-        {...state}
-        {...actions}
-      />
+      <BrewMethodList />
     )
   }
 }
@@ -27,10 +20,8 @@ class Explore extends Component {
 
 
 const conn = connect(state => ({
-    state: state.brewMethodsState
   }),
   (dispatch) => ({
-    actions: bindActionCreators(actions, dispatch)
   })
 )(Explore);
 

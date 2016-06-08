@@ -1,6 +1,4 @@
 import {combineReducers} from 'redux'
-import * as NavigationStateUtils from './NavigationStateUtils'
-
 import * as Actions from '../actions'
 
 const initialNavState = {
@@ -54,7 +52,7 @@ function brewMethodsState(state = initialBrewMethodListState, action) {
     case Actions.DATA_BREW_METHODS_LOAD_STARTED:
       return Object.assign({}, state, {
         ...state,
-        loadingBrewMethods: true
+        loadingBrewMethods: true,
       });
     case Actions.DATA_BREW_METHODS_LOADED:
       return Object.assign({}, state, {

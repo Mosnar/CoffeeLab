@@ -13,9 +13,7 @@ import {
 
 import {bindActionCreators} from 'redux';
 
-import { connect } from 'react-redux';
-
-import {navigatePush, navigatePop} from '../actions'
+import {connect} from 'react-redux';
 
 import * as actions from '../actions';
 
@@ -38,6 +36,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     EStyleSheet.build(theme);
+
+    this._renderScene = this._renderScene.bind(this);
   }
 
   render() {
@@ -97,7 +97,6 @@ App.propTypes = {
 export default connect(
   state => ({
     navigationState: state.navigationState,
-    brewMethodsState: state.brewMethodsState
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),
